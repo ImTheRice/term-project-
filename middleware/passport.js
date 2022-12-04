@@ -18,13 +18,11 @@ const localLogin = new LocalStrategy(
 );
 
 passport.serializeUser(function (user, done) {
-    console.log("serialize")
   done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
   let user = userController.getUserById(id);
-    console.log("deserialize")
   if (user) {
     done(null, user);
   } else {
