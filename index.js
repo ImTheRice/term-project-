@@ -45,18 +45,10 @@ app.use(passport.session());
 // Routes start here
 
 app.get("/reminders", check.ensureAuthenticated, reminderController.list);
-
 app.get("/reminder/new", check.ensureAuthenticated, reminderController.new);
-
 app.get("/reminder/:id", check.ensureAuthenticated, reminderController.listOne);
-
 app.get("/reminder/:id/edit", check.ensureAuthenticated, reminderController.edit);
-
 app.post("/reminder/", check.ensureAuthenticated, reminderController.create);
-
-app.get("/dashboard", check.ensureAuthenticated, (req, res) => {
-  res.send("WElcome " + req.user.name)
-})
 
 // Implement this yourself
 app.post("/reminder/update/:id", check.ensureAuthenticated, reminderController.update);
